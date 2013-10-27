@@ -1,12 +1,12 @@
 var ntwitter = require('ntwitter'), secrets = require('./secrets')
 var twit
 
- var redis = require("redis"),
- client = redis.createClient();
+var redis = require("redis"),
+client = redis.createClient();
 
- client.on("error", function (err) {
-        console.log("Redis Error " + err);
-    });
+client.on("error", function (err) {
+    console.log("Redis Error " + err);
+});
 
 //Haal alle gebruikers op
 //TODO: Reddis logic

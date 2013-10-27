@@ -32,9 +32,9 @@ passport.use(new TwitterStrategy({
         'id': profile.id
     })
 
-    client.hsetnx(profile.id, 'enabled', true)
-    client.hsetnx(profile.id, 'broadcastUpdate', false)
-    client.hsetnx(profile.id, 'updateMsg', "{username} just updated my twitter bio. #biiio https://bii.io/"+profile.username)
+    client.hsetnx(profile.username, 'enabled', true)
+    client.hsetnx(profile.username, 'broadcastUpdate', false)
+    client.hsetnx(profile.username, 'updateMsg', "{username} just updated my twitter bio. #biiio https://bii.io/"+profile.username)
 
     done(null, profile)
   }
