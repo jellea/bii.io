@@ -1,19 +1,22 @@
 extends layout
 
 block content
-    h1#maintitle Bii.io
-    p  #{username}, Bii.io is activated; people who you follow can edit your boring bio. Invite your friends to participate.
+    p  Hi <strong>#{username}</strong>, Bii.io is activated; people who you follow can edit your boring bio. Invite your friends to participate.
     a(href="https://twitter.com/intent/tweet?button_hashtag=Biiio&text=Update%20my%20bio",class="btn btn-success",data-size="large",data-related="#{accountname}") <span class="glyphicon glyphicon-comment"></span> Invite friends
     script !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     hr
     h3 Settings
    
     p Send an automated Tweet when your bio is updated?
-    div(class="btn-group")
-        a(class="btn btn-default") Yes!
-        a(class="btn btn-default") No!
+    div(class="btn-group bioButtons")
+        a(class="btn btn-default yes") Yes!
+        a(class="btn btn-default no") No!
+    div(class="slider")
+        p What should that Tweet be?
+        textarea(class="form-control") #{broadcastMsg}
+        a(class="btn btn-default setMsg") Save this message!
     hr
-    a(class='btn btn-info') <span class="glyphicon glyphicon-repeat"></span> Restore old bio
+    a(class='btn btn-info oldBio',data-title='This was your old bio: #{oldBio}') <span class="glyphicon glyphicon-repeat"></span> Restore to pre-Bii.io bio
     br
     br
     a(class='btn btn-danger') <span class="glyphicon glyphicon-fire"></span> Deactivate Bii.io

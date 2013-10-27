@@ -16,6 +16,14 @@ p {
 	margin:20px 0px;
 }
 
+.slider {
+  display: none;
+}
+
+.slider textarea {
+  margin-top:10px;
+}
+
 #maintitle {
 	font-size: 5em;
 }

@@ -3,6 +3,9 @@
  * GET users listing.
  */
 
+var redis = require('redis') 
+var client = redis.createClient()
+
 exports.get = function(req, res){
   if(req.user){
     params = {
@@ -18,14 +21,16 @@ exports.get = function(req, res){
 }
 
 exports.post = function(req, res){
-  if(req.query.action=="msgSet"){
-    if(req.query.payload===""){
+  console.log(req.user)
+  if(req.body.action==="msgSet"){
+    if(req.body.payload===""){
       client.hmset(req.user.username, {broadcastEnabled:false},
             function(err){if(!err){res.send(200)}else{res.send(500)}})
     }else{
-      client.hmset(req.user.username, {broadcastEnabled:true, broadcastMsg: req.query.payload},
-            function(err){if(!err){res.send(200)}else{res.send(500)}})
+      client.hmset(req.user.username, {broadcastEnabled:true, broadcastMsg: req.body.payload},
+            function(err){if(!err){res.send(req.body.payload)}else{res.send(500)}})
     }
-  }else if()
-  res.send(200)
+  }else{
+    res.send(419)
+  }
 }

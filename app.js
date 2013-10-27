@@ -22,7 +22,7 @@ var client = redis.createClient()
 passport.use(new TwitterStrategy({
     consumerKey: secrets.twitter.key,
     consumerSecret: secrets.twitter.secret,
-    callbackURL: secret.twitter.callbackUrl 
+    callbackURL: secrets.twitter.callbackUrl 
   },
   function(token, tokenSecret, profile, done) {
     client.hmset(profile.username ,{
