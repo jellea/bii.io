@@ -31,7 +31,7 @@ var keys =  client.keys("*", function(err, userids){
 		twit.getMentions({
 			since_id : user.lastTweetID},function(err,data){
 			console.log(data)
-			tweets = data;
+			tweets = data
 			//TODO: Reddis logic
 			//REDDIS UPDATE LAST CHECKED TWEET -> tweets[tweets.length-1].id_str
 			client.hset(userids[i], "lastTweetID",tweets[tweets.length-1].id_str, redis.print)
