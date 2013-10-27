@@ -1,8 +1,8 @@
 bii.io
 ==========
 
-`brew install node redis`
-`npm install`
-`node app`
+`brew install node redis`   
+`npm install`   
+`node app`  
 
 Tadaaa!

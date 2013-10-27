@@ -2,10 +2,8 @@ extends layout
 
 block content
     h1#maintitle Bii.io
-    if activated
-      p You just actived Bii.io on <strong>#{accountname}</strong>
-    p With Bii.io activated, people who you follow can edit your boring bio. Invite your friends to participate.
-    a(href="https://twitter.com/intent/tweet?button_hashtag=Biiio&text=Update%20my%20bio",class="btn btn-success",data-size="large",data-related="ehwillems") <span class="glyphicon glyphicon-comment"></span> Invite friends
+    p  #{username}, Bii.io is activated; people who you follow can edit your boring bio. Invite your friends to participate.
+    a(href="https://twitter.com/intent/tweet?button_hashtag=Biiio&text=Update%20my%20bio",class="btn btn-success",data-size="large",data-related="#{accountname}") <span class="glyphicon glyphicon-comment"></span> Invite friends
     script !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     hr
     h3 Settings

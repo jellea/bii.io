@@ -6,7 +6,8 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , user = require('./routes/user')
+  , manage = require('./routes/manage')
+  , showuser = require('./routes/showuser')
   , http = require('http')
   , path = require('path')
   , redis = require('redis')
@@ -16,7 +17,6 @@ var express = require('express')
 var client = redis.createClient()
   , app = express()
   , secrets = require('./secrets')
-
 
 // Login
 passport.use(new TwitterStrategy({
@@ -56,7 +56,7 @@ app.use(express.logger('dev'))
 app.use(express.bodyParser())
 app.use(express.cookieParser())
 //app.use(express.methodOverride())
-app.use(express.session({secret: 'roflpantoffel23r567tfyguyvuydwfhiwheqfiuhwehf'}))
+app.use(express.session({secret: secrets.session}))
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(app.router)
@@ -68,11 +68,13 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index)
-app.get('/users', user.list)
+app.get('/manage', manage)
 app.get('/auth/twitter', passport.authenticate('twitter'))
 app.get('/auth/twitter/callback',
-  passport.authenticate('twitter', { successRedirect: '/onoroff',
-                                     failureRedirect: '/login' }))
+  passport.authenticate('twitter', { successRedirect: '/manage',
+                                     failureRedirect: '/' }))
+// fetch user pages
+app.get('/test', showuser)
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'))
