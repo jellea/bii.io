@@ -22,13 +22,14 @@ var client = redis.createClient()
 passport.use(new TwitterStrategy({
     consumerKey: secrets.twitter.key,
     consumerSecret: secrets.twitter.secret,
-    callbackURL: "http://localhost:3000/auth/twitter/callback"
+    callbackURL: secret.twitter.callbackUrl 
   },
   function(token, tokenSecret, profile, done) {
-    client.hmset(profile.id,{
+    client.hmset(profile.username ,{
         'username': profile.username,
         'photo': profile.photos[0].value,
-        'oldBio': profile._json.description
+        'oldBio': profile._json.description,
+        'id': profile.id
     })
 
     client.hsetnx(profile.id, 'enabled', true)
@@ -68,13 +69,14 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index)
-app.get('/manage', manage)
+app.get('/manage', manage.get)
+app.post('/manage', manage.post)
 app.get('/auth/twitter', passport.authenticate('twitter'))
 app.get('/auth/twitter/callback',
   passport.authenticate('twitter', { successRedirect: '/manage',
                                      failureRedirect: '/' }))
 // fetch user pages
-app.get('/test', showuser)
+app.get('/:twuser', showuser)
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'))
