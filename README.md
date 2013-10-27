@@ -1,4 +1,8 @@
-changeb.io
+bii.io
 ==========
 
-Update your Bio everywhere
+`brew install node redis`
+`npm install`
+`node app`
+
+Tadaaa!
