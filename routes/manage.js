@@ -9,6 +9,6 @@ module.exports = function(req, res){
     console.log(req.user)
     res.render('manage', params);
   }else{
-    res.send(400)
+    res.redirect('/')
   }
 };
