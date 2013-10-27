@@ -5,7 +5,7 @@ var twit
  client = redis.createClient();
 
  client.on("error", function (err) {
-        console.log("Error " + err);
+        console.log("Redis Error " + err);
     });
 
 //Haal alle gebruikers op
@@ -13,6 +13,7 @@ var twit
 var keys =  client.keys("*", function(err, userids){
 	// for loop
 	for(i=0;i<userids;i++){
+	if(userids[i].enabled === true){
 	client.hgetall(userids[i], function(err, user){
 		
 		//Gaan we voor alle gebruikers eens dingen kijken
@@ -69,6 +70,7 @@ var keys =  client.keys("*", function(err, userids){
 			}
 		})
 })
+	}
 	}
 })
 })
