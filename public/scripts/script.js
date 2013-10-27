@@ -1,7 +1,27 @@
 'use strict';
 
 $(function(){
-    $('.oldBio').tooltip();
+    $('.oldBio').click(function(){
+        $.ajax({
+          url: "manage/",
+          type: "POST",
+          data: {"action":"revertBio","payload":true},
+          success: function( data ) {
+            $('.oldBio').removeClass('btn-info').addClass('btn-success');
+          }
+        });
+    }).tooltip();
+
+    $('.deactivate').click(function(){
+        $.ajax({
+          url: "manage/",
+          type: "POST",
+          data: {"action":"deactivate","payload":true},
+          success: function( data ) {
+            console.log('Your account was deactivated. Do something here.');
+          }
+        });
+    }).tooltip();
 
     $('.bioButtons > .yes').click(function(){
         $('.slider > .setMsg').removeClass('btn-info');
@@ -29,7 +49,7 @@ $(function(){
           success: function( data ) {
             $('.bioButtons > .yes').removeClass('btn-info');
             $('.slider > .setMsg').removeClass('btn-info');
-            $(this).addClass('btn-info');
+            $('.bioButtons > .no').addClass('btn-info');
             $('.slider').slideUp();
           }
         });
