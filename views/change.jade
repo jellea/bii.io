@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    h1#maintitle Bii.io
+    p You are one step away from changing <strong>#{accountname}</strong>&rsquo; bio
+    a(href="https://twitter.com/intent/tweet?button_hashtag=Biiio&text=Update%20my%20bio",class="btn btn-success",data-size="large",data-related="ehwillems") <span class="glyphicon glyphicon-comment"></span> Change bio
+    script !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
