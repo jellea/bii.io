@@ -2,6 +2,13 @@ doctype 5
 html
   head
     title= title
+    link(href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", rel="stylesheet")
+    link(href="http://fonts.googleapis.com/css?family=Maven+Pro:400,500,700" rel="stylesheet" type="text/css")
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js")
   body
-    block content
+    div(class='container')
+      div(class='col-md-4')
+      div(class='col-md-4 center')
+        block content
+      div(class='col-md-4')
