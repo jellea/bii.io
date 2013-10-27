@@ -7,7 +7,7 @@ module.exports = function(req, res){
   if(req.user){
     params = {username: req.user.username}
     console.log(req.user)
-    res.render('onoff', params);
+    res.render('manage', params);
   }else{
     res.send(400)
   }
