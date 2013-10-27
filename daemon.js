@@ -54,6 +54,7 @@ var keys =  client.keys("*", function(err, userids){
 						
 						if (rightTag) {
 							var newBioText = tweets[tweet].replace("#biiio","").replace("@"+users[i].name,"");					
+							newBioText = "Bio provided by @"+ user.screen_name +": "+newBioText;
 							//Volgt gebruiker de commenter?
 							twit.showFriendship(user.name, tweets[tweet].user.id_str, function(err, data) {
 								console.log(data)
