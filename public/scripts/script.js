@@ -14,15 +14,15 @@ $(function(){
 
     $('.deactivate').click(function(){
           
-            
         $.ajax({
           url: "manage/",
           type: "POST",
           data: {"action":"deactivate","payload":true},
           success: function( data ) {
             console.log('Your account was deactivated. Do something here.');
-         	$('.btn').not('.deactivate').attr('disable','disabled');
-            $('.deactivate').removeClass('btn-danger').addClass('btn-success').html('<span class="glyphicon glyphicon-fire"></span>Reactive your Bii.io');
+            $('.btn').not('.deactivate').attr('disable','disabled');
+        	$('.deactivate').removeClass('btn-danger').addClass('btn-success').html('<span class="glyphicon glyphicon-fire"></span>Reactive your Bii.io');
+        	$(".options").slideUp("slow");
           }
         });
     }).tooltip();
@@ -58,8 +58,4 @@ $(function(){
           }
         });
     });
-
-
-
-
 });
