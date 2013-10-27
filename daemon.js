@@ -1,4 +1,4 @@
-var ntwitter = require('ntwitter')
+var ntwitter = require('ntwitter'), secrets = require('./secrets')
 var twit
 
  var redis = require("redis"),
@@ -21,8 +21,8 @@ var keys =  client.keys("*", function(err, userids){
 	twit = new ntwitter({
 		consumer_key : user.consKey,
 		consumer_secret : user.consSecret,
-		access_token_key : twitter.key,
-		access_token_secret : twitter.secret
+		access_token_key : secrets.twitter.key,
+		access_token_secret : secrets.twitter.secret
 	})
 
 	twit
