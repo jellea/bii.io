@@ -25,6 +25,7 @@ passport.use(new TwitterStrategy({
     callbackURL: secrets.twitter.callbackUrl 
   },
   function(token, tokenSecret, profile, done) {
+    // TODO make async or promises
     client.hmset(profile.username ,{
         'username': profile.username,
         'photo': profile.photos[0].value,
@@ -41,10 +42,11 @@ passport.use(new TwitterStrategy({
 ))
 
 passport.serializeUser(function(user, done) {
-  done(null, user.id)
+  done(null, user.username)
 })
 
 passport.deserializeUser(function(id, done) {
+  console.log(id)
   client.hgetall(id, done)
 })
 
